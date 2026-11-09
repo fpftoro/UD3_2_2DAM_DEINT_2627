@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 260" width="420" height="260" role="img" aria-labelledby="t d">
+  <title id="t">Ventana «Saludo al socio»</title>
+  <desc id="d">Ventana de WPF con una etiqueta «Nombre del socio:», una caja de texto con el nombre Lucía, un botón «Saludar» y el texto «¡Hola, Lucía! Bienvenido al club.» debajo.</desc>
+  <g font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12">
+    <rect x="0.5" y="0.5" width="419" height="259" fill="#ffffff" stroke="#8a8a8a"/>
+    <!-- Barra de título -->
+    <rect x="1" y="1" width="418" height="30" fill="#f3f3f3"/>
+    <text x="12" y="20" fill="#1b1b1b">Saludo al socio</text>
+    <g stroke="#1b1b1b" stroke-width="1" fill="none">
+      <path d="M300 16h10"/>
+      <rect x="342.500" y="11.500" width="9" height="9"/>
+      <path d="M382 11l10 10M392 11l-10 10"/>
+    </g>
+    <!-- Contenido (margen de 16) -->
+    <text x="16" y="60" fill="#1b1b1b">Nombre del socio:</text>
+    <rect x="16.500" y="68.500" width="387" height="22" fill="#ffffff" stroke="#7a7a7a"/>
+    <text x="22" y="84" fill="#1b1b1b">Lucía</text>
+    <rect x="16.500" y="102.500" width="76" height="27" rx="3" fill="#fdfdfd" stroke="#adadad"/>
+    <text x="54.500" y="120" fill="#1b1b1b" text-anchor="middle">Saludar</text>
+    <text x="16" y="160" fill="#1b1b1b" font-size="16">¡Hola, Lucía! Bienvenido al club.</text>
+  </g>
+</svg>

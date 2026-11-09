@@ -1,0 +1,217 @@
+<Window x:Class="ReservaPista.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ReservaPista"
+        mc:Ignorable="d"
+        Title="Reserva de pistas"
+        Height="560"
+        Width="760"
+        MinHeight="500"
+        MinWidth="680">
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="_Archivo">
+                <MenuItem x:Name="mnuNueva"
+                          Header="_Nueva reserva"
+                          Click="btnNueva_Click" />
+                <Separator />
+                <MenuItem x:Name="mnuSalir"
+                          Header="_Salir"
+                          InputGestureText="Alt+F4"
+                          Click="mnuSalir_Click" />
+            </MenuItem>
+            <MenuItem Header="A_yuda">
+                <MenuItem x:Name="mnuAcercaDe"
+                          Header="_Acerca de…"
+                          Click="mnuAcercaDe_Click" />
+            </MenuItem>
+        </Menu>
+
+        <ToolBar DockPanel.Dock="Top">
+            <Button x:Name="btnNueva"
+                    Content="Nueva reserva"
+                    ToolTip="Vacía el formulario para una reserva nueva"
+                    Click="btnNueva_Click" />
+        </ToolBar>
+
+        <StatusBar DockPanel.Dock="Bottom">
+            <StatusBarItem>
+                <TextBlock x:Name="txtEstado"
+                           Text="Listo" />
+            </StatusBarItem>
+        </StatusBar>
+
+        <TabControl Margin="8">
+            <TabItem Header="Reserva">
+                <Grid Margin="16"
+                      ColumnDefinitions="*, Auto">
+                    <Grid ColumnDefinitions="Auto, *"
+                          RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto, *">
+                        <Label Grid.Row="0"
+                               Grid.Column="0"
+                               Content="_Socio:"
+                               Target="{Binding ElementName=txtSocio}" />
+                        <TextBox x:Name="txtSocio"
+                                 Grid.Row="0"
+                                 Grid.Column="1"
+                                 MaxLength="60"
+                                 Margin="0,0,0,8" />
+
+                        <Label Grid.Row="1"
+                               Grid.Column="0"
+                               Content="_Pista:"
+                               Target="{Binding ElementName=cmbPista}" />
+                        <ComboBox x:Name="cmbPista"
+                                  Grid.Row="1"
+                                  Grid.Column="1"
+                                  HorizontalAlignment="Left"
+                                  MinWidth="160"
+                                  SelectedIndex="0"
+                                  Margin="0,0,0,8">
+                            <ComboBoxItem Content="Pista 1 (cubierta)" />
+                            <ComboBoxItem Content="Pista 2 (exterior)" />
+                            <ComboBoxItem Content="Pista 3 (exterior)" />
+                        </ComboBox>
+
+                        <Label Grid.Row="2"
+                               Grid.Column="0"
+                               Content="_Fecha:"
+                               Target="{Binding ElementName=dtpFecha}" />
+                        <DatePicker x:Name="dtpFecha"
+                                    Grid.Row="2"
+                                    Grid.Column="1"
+                                    HorizontalAlignment="Left"
+                                    MinWidth="160"
+                                    Margin="0,0,0,8" />
+
+                        <Label Grid.Row="3"
+                               Grid.Column="0"
+                               Content="_Duración:"
+                               Target="{Binding ElementName=sldDuracion}" />
+                        <StackPanel Grid.Row="3"
+                                    Grid.Column="1"
+                                    Orientation="Horizontal"
+                                    Margin="0,0,0,8">
+                            <Slider x:Name="sldDuracion"
+                                    Width="200"
+                                    Minimum="30"
+                                    Maximum="120"
+                                    Value="60"
+                                    TickFrequency="30"
+                                    TickPlacement="BottomRight"
+                                    IsSnapToTickEnabled="True"
+                                    AutomationProperties.Name="Duración en minutos"
+                                    ValueChanged="sldDuracion_ValueChanged" />
+                            <TextBlock x:Name="txtDuracion"
+                                       Text="60 min"
+                                       VerticalAlignment="Center"
+                                       Margin="16,0,0,0" />
+                        </StackPanel>
+
+                        <TextBlock Grid.Row="4"
+                                   Grid.Column="0"
+                                   Text="Tipo:"
+                                   Margin="4,0,16,8" />
+                        <StackPanel Grid.Row="4"
+                                    Grid.Column="1"
+                                    Orientation="Horizontal"
+                                    Margin="0,0,0,8">
+                            <RadioButton x:Name="rbIndividual"
+                                         GroupName="tipo"
+                                         Content="_Individual"
+                                         IsChecked="True"
+                                         Margin="0,0,16,0" />
+                            <RadioButton x:Name="rbDobles"
+                                         GroupName="tipo"
+                                         Content="Do_bles" />
+                        </StackPanel>
+
+                        <TextBlock Grid.Row="5"
+                                   Grid.Column="0"
+                                   Text="Extras:"
+                                   Margin="4,0,16,8" />
+                        <StackPanel Grid.Row="5"
+                                    Grid.Column="1"
+                                    Margin="0,0,0,8">
+                            <CheckBox x:Name="chkTodos"
+                                      Content="_Todos los extras"
+                                      Click="chkTodos_Click" />
+                            <CheckBox x:Name="chkRaqueta"
+                                      Content="Alquiler de ra_queta"
+                                      Margin="24,4,0,0"
+                                      Click="chkExtra_Click" />
+                            <CheckBox x:Name="chkLuz"
+                                      Content="_Luz artificial"
+                                      Margin="24,4,0,0"
+                                      Click="chkExtra_Click" />
+                        </StackPanel>
+
+                        <Expander Grid.Row="6"
+                                  Grid.Column="0"
+                                  Grid.ColumnSpan="2"
+                                  Header="Opciones avanzadas"
+                                  Margin="0,0,0,8">
+                            <StackPanel Orientation="Horizontal"
+                                        Margin="0,8,0,0">
+                                <Label Content="PIN _opcional (4 cifras):"
+                                       Target="{Binding ElementName=pwdPin}" />
+                                <PasswordBox x:Name="pwdPin"
+                                             MaxLength="4"
+                                             Width="80" />
+                            </StackPanel>
+                        </Expander>
+
+                        <Button x:Name="btnReservar"
+                                Grid.Row="7"
+                                Grid.Column="1"
+                                Content="_Reservar"
+                                Padding="16,4"
+                                IsDefault="True"
+                                Click="btnReservar_Click"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Bottom" />
+                    </Grid>
+
+                    <Image Grid.Column="1"
+                           Source="/Imagenes/pista.png"
+                           Width="96"
+                           Stretch="Uniform"
+                           VerticalAlignment="Top"
+                           Margin="16,0,0,0"
+                           AutomationProperties.Name="Esquema de una pista de tenis" />
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="Reservas hechas">
+                <ListBox x:Name="lstReservas"
+                         Margin="16" />
+            </TabItem>
+
+            <TabItem Header="Socios">
+                <DockPanel Margin="16">
+                    <TextBlock DockPanel.Dock="Top"
+                               Text="Socios del club"
+                               FontSize="18"
+                               FontWeight="SemiBold"
+                               Margin="0,0,0,8" />
+                    <DataGrid x:Name="dgSocios"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              CanUserAddRows="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Nombre"
+                                                Binding="{Binding Nombre}"
+                                                Width="*" />
+                            <DataGridTextColumn Header="Categoría"
+                                                Binding="{Binding Categoria}" />
+                            <DataGridTextColumn Header="Antigüedad (años)"
+                                                Binding="{Binding Antiguedad}" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </DockPanel>
+            </TabItem>
+        </TabControl>
+    </DockPanel>
+</Window>

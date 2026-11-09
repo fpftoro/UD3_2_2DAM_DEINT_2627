@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 290" width="900" height="290" role="img" aria-labelledby="t d">
+  <title id="t">Los cinco paneles de WPF con el mismo contenido</title>
+  <desc id="d">Cuatro elementos numerados colocados por un StackPanel (uno debajo de otro), un DockPanel (arriba, a la izquierda, abajo y el resto), un WrapPanel (dos por fila), un Grid (cuadrícula de dos por dos) y un Canvas (en posiciones absolutas).</desc>
+  <rect width="900" height="290" rx="10" fill="#ffffff" stroke="#c9c9d6"/>
+  <g font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif"><g transform="translate(20,0)">
+      <text x="80" y="28" text-anchor="middle" font-size="15" font-weight="600" fill="#1b1b2f">StackPanel</text>
+      <text x="80" y="46" text-anchor="middle" font-size="12" fill="#5b5b73">apila en una dirección</text>
+      <rect x="0" y="58" width="160" height="200" rx="4" fill="#fafafe" stroke="#9b7bff"/>
+      <rect x="8" y="66" width="144" height="40" rx="3" fill="#5b3fd1" fill-opacity="0.18" stroke="#5b3fd1"/><text x="80.0" y="91.0" text-anchor="middle" fill="#1b1b2f" font-size="13">1</text><rect x="8" y="112" width="144" height="40" rx="3" fill="#1e88e5" fill-opacity="0.18" stroke="#1e88e5"/><text x="80.0" y="137.0" text-anchor="middle" fill="#1b1b2f" font-size="13">2</text><rect x="8" y="158" width="144" height="40" rx="3" fill="#00897b" fill-opacity="0.18" stroke="#00897b"/><text x="80.0" y="183.0" text-anchor="middle" fill="#1b1b2f" font-size="13">3</text><rect x="8" y="204" width="144" height="40" rx="3" fill="#ef6c00" fill-opacity="0.18" stroke="#ef6c00"/><text x="80.0" y="229.0" text-anchor="middle" fill="#1b1b2f" font-size="13">4</text>
+    </g><g transform="translate(196,0)">
+      <text x="80" y="28" text-anchor="middle" font-size="15" font-weight="600" fill="#1b1b2f">DockPanel</text>
+      <text x="80" y="46" text-anchor="middle" font-size="12" fill="#5b5b73">pega a los bordes</text>
+      <rect x="0" y="58" width="160" height="200" rx="4" fill="#fafafe" stroke="#9b7bff"/>
+      <rect x="4" y="62" width="152" height="36" rx="3" fill="#5b3fd1" fill-opacity="0.18" stroke="#5b3fd1"/><text x="80.0" y="85.0" text-anchor="middle" fill="#1b1b2f" font-size="13">1 · Top</text><rect x="4" y="102" width="44" height="152" rx="3" fill="#1e88e5" fill-opacity="0.18" stroke="#1e88e5"/><text x="26.0" y="183.0" text-anchor="middle" fill="#1b1b2f" font-size="13">2 · Left</text><rect x="52" y="218" width="104" height="36" rx="3" fill="#00897b" fill-opacity="0.18" stroke="#00897b"/><text x="104.0" y="241.0" text-anchor="middle" fill="#1b1b2f" font-size="13">3 · Bottom</text><rect x="52" y="102" width="104" height="112" rx="3" fill="#ef6c00" fill-opacity="0.18" stroke="#ef6c00"/><text x="104.0" y="163.0" text-anchor="middle" fill="#1b1b2f" font-size="13">4 · resto</text>
+    </g><g transform="translate(372,0)">
+      <text x="80" y="28" text-anchor="middle" font-size="15" font-weight="600" fill="#1b1b2f">WrapPanel</text>
+      <text x="80" y="46" text-anchor="middle" font-size="12" fill="#5b5b73">salta de línea</text>
+      <rect x="0" y="58" width="160" height="200" rx="4" fill="#fafafe" stroke="#9b7bff"/>
+      <rect x="6" y="66" width="68" height="40" rx="3" fill="#5b3fd1" fill-opacity="0.18" stroke="#5b3fd1"/><text x="40.0" y="91.0" text-anchor="middle" fill="#1b1b2f" font-size="13">1</text><rect x="78" y="66" width="68" height="40" rx="3" fill="#1e88e5" fill-opacity="0.18" stroke="#1e88e5"/><text x="112.0" y="91.0" text-anchor="middle" fill="#1b1b2f" font-size="13">2</text><rect x="6" y="112" width="68" height="40" rx="3" fill="#00897b" fill-opacity="0.18" stroke="#00897b"/><text x="40.0" y="137.0" text-anchor="middle" fill="#1b1b2f" font-size="13">3</text><rect x="78" y="112" width="68" height="40" rx="3" fill="#ef6c00" fill-opacity="0.18" stroke="#ef6c00"/><text x="112.0" y="137.0" text-anchor="middle" fill="#1b1b2f" font-size="13">4</text>
+    </g><g transform="translate(548,0)">
+      <text x="80" y="28" text-anchor="middle" font-size="15" font-weight="600" fill="#1b1b2f">Grid</text>
+      <text x="80" y="46" text-anchor="middle" font-size="12" fill="#5b5b73">filas y columnas</text>
+      <rect x="0" y="58" width="160" height="200" rx="4" fill="#fafafe" stroke="#9b7bff"/>
+      <rect x="4" y="62" width="74" height="96" rx="3" fill="#5b3fd1" fill-opacity="0.18" stroke="#5b3fd1"/><text x="41.0" y="115.0" text-anchor="middle" fill="#1b1b2f" font-size="13">1</text><rect x="82" y="62" width="74" height="96" rx="3" fill="#1e88e5" fill-opacity="0.18" stroke="#1e88e5"/><text x="119.0" y="115.0" text-anchor="middle" fill="#1b1b2f" font-size="13">2</text><rect x="4" y="162" width="74" height="92" rx="3" fill="#00897b" fill-opacity="0.18" stroke="#00897b"/><text x="41.0" y="213.0" text-anchor="middle" fill="#1b1b2f" font-size="13">3</text><rect x="82" y="162" width="74" height="92" rx="3" fill="#ef6c00" fill-opacity="0.18" stroke="#ef6c00"/><text x="119.0" y="213.0" text-anchor="middle" fill="#1b1b2f" font-size="13">4</text>
+    </g><g transform="translate(724,0)">
+      <text x="80" y="28" text-anchor="middle" font-size="15" font-weight="600" fill="#1b1b2f">Canvas</text>
+      <text x="80" y="46" text-anchor="middle" font-size="12" fill="#5b5b73">coordenadas absolutas</text>
+      <rect x="0" y="58" width="160" height="200" rx="4" fill="#fafafe" stroke="#9b7bff"/>
+      <rect x="14" y="70" width="60" height="40" rx="3" fill="#5b3fd1" fill-opacity="0.18" stroke="#5b3fd1"/><text x="44.0" y="95.0" text-anchor="middle" fill="#1b1b2f" font-size="13">1</text><rect x="86" y="100" width="60" height="40" rx="3" fill="#1e88e5" fill-opacity="0.18" stroke="#1e88e5"/><text x="116.0" y="125.0" text-anchor="middle" fill="#1b1b2f" font-size="13">2</text><rect x="30" y="168" width="60" height="40" rx="3" fill="#00897b" fill-opacity="0.18" stroke="#00897b"/><text x="60.0" y="193.0" text-anchor="middle" fill="#1b1b2f" font-size="13">3</text><rect x="96" y="206" width="50" height="40" rx="3" fill="#ef6c00" fill-opacity="0.18" stroke="#ef6c00"/><text x="121.0" y="231.0" text-anchor="middle" fill="#1b1b2f" font-size="13">4</text>
+    </g></g>
+</svg>

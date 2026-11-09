@@ -1,0 +1,25 @@
+# Resultados de compilación de .NET
+bin/
+obj/
+[Dd]ebug/
+[Rr]elease/
+publish/
+*.nupkg
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+
+# Pruebas
+TestResults/
+coverage/
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+
+# SQLite: ficheros temporales (el .db sí se sube)
+*.db-journal
+*.db-wal
+*.db-shm

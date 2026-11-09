@@ -1,0 +1,24 @@
+<Page x:Class="Navegacion.Paginas.PaginaDetalleSocio"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:controles="clr-namespace:Navegacion.Controles"
+      mc:Ignorable="d"
+      Title="Ficha del socio">
+    <StackPanel>
+        <TextBlock Text="Ficha del socio"
+                   FontSize="22"
+                   FontWeight="SemiBold"
+                   Margin="0,0,0,16" />
+        <controles:TarjetaSocio x:Name="ctlTarjeta"
+                                MaxWidth="360"
+                                HorizontalAlignment="Left" />
+        <Button x:Name="btnVolver"
+                Content="_Volver"
+                HorizontalAlignment="Left"
+                Padding="12,4"
+                Margin="0,16,0,0"
+                Click="btnVolver_Click" />
+    </StackPanel>
+</Page>

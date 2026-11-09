@@ -1,0 +1,24 @@
+<Window x:Class="SaludoSocio.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SaludoSocio"
+        mc:Ignorable="d"
+        Title="Saludo al socio"
+        Height="260"
+        Width="420">
+    <StackPanel Margin="16">
+        <TextBlock Text="Nombre del socio:" />
+        <TextBox x:Name="txtNombre"
+                 Margin="0,4,0,12" />
+        <Button x:Name="btnSaludar"
+                Content="Saludar"
+                Padding="16,4"
+                HorizontalAlignment="Left"
+                Click="btnSaludar_Click" />
+        <TextBlock x:Name="txtSaludo"
+                   Margin="0,16,0,0"
+                   FontSize="16" />
+    </StackPanel>
+</Window>

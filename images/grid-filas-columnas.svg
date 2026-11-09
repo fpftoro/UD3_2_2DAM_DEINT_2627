@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 340" width="640" height="340" role="img" aria-labelledby="t d">
+  <title id="t">Filas y columnas de un Grid</title>
+  <desc id="d">Un Grid de tres columnas (Auto, * y 2*) y tres filas (Auto, * y 48 píxeles). Una etiqueta ocupa la primera celda, una caja de texto abarca dos columnas, un cuadro de notas ocupa la fila central y dos botones están en la última fila.</desc>
+  <rect width="640" height="340" rx="10" fill="#ffffff" stroke="#c9c9d6"/>
+  <g font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="14" fill="#1b1b2f">
+    <!-- cabeceras de columnas -->
+    <g fill="#5b3fd1" font-weight="600" text-anchor="middle">
+      <text x="106" y="40">Auto</text>
+      <text x="226" y="40">*</text>
+      <text x="450" y="40">2*</text>
+    </g>
+    <!-- cabeceras de filas -->
+    <g fill="#5b3fd1" font-weight="600" text-anchor="end">
+      <text x="46" y="82">Auto</text>
+      <text x="46" y="180">*</text>
+      <text x="46" y="288">48</text>
+    </g>
+    <!-- rejilla -->
+    <g stroke="#9b7bff" stroke-dasharray="5 4" fill="none">
+      <rect x="60" y="52" width="540" height="260"/>
+      <path d="M152 52V312M301 52V312"/>
+      <path d="M60 98H600M60 264H600"/>
+    </g>
+    <!-- contenido -->
+    <text x="72" y="82">Nombre:</text>
+    <rect x="164" y="62" width="424" height="26" rx="4" fill="#eef1ff" stroke="#6b7bd6"/>
+    <text x="174" y="80" fill="#4a5280">TextBox  ·  Grid.Column="1"  ·  Grid.ColumnSpan="2"</text>
+    <text x="72" y="124">Notas:</text>
+    <rect x="164" y="110" width="424" height="142" rx="4" fill="#eef1ff" stroke="#6b7bd6"/>
+    <text x="174" y="134" fill="#4a5280">TextBox  ·  Grid.Row="1"  ·  ocupa el espacio sobrante</text>
+    <rect x="404" y="274" width="88" height="28" rx="4" fill="#ffffff" stroke="#7a7a7a"/>
+    <text x="448" y="293" text-anchor="middle">Cancelar</text>
+    <rect x="500" y="274" width="88" height="28" rx="4" fill="#5b3fd1"/>
+    <text x="544" y="293" text-anchor="middle" fill="#ffffff">Guardar</text>
+  </g>
+</svg>

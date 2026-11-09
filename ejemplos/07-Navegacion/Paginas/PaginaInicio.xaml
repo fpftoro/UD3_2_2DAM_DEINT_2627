@@ -1,0 +1,24 @@
+<Page x:Class="Navegacion.Paginas.PaginaInicio"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:controles="clr-namespace:Navegacion.Controles"
+      mc:Ignorable="d"
+      Title="Inicio">
+    <StackPanel>
+        <TextBlock Text="Bienvenido al club"
+                   FontSize="22"
+                   FontWeight="SemiBold"
+                   Margin="0,0,0,16" />
+        <TextBlock x:Name="txtTotal"
+                   Margin="0,0,0,16" />
+        <TextBlock Text="Socio más antiguo"
+                   FontWeight="SemiBold"
+                   Margin="0,0,0,8" />
+        <!-- El mismo control de usuario que usa la ficha del socio -->
+        <controles:TarjetaSocio x:Name="ctlMasAntiguo"
+                                MaxWidth="360"
+                                HorizontalAlignment="Left" />
+    </StackPanel>
+</Page>

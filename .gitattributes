@@ -1,0 +1,18 @@
+# Finales de línea: Git normaliza el texto y cada sistema usa los suyos
+* text=auto
+
+# Visual Studio espera CRLF en estos ficheros
+*.sln text eol=crlf
+
+# Los scripts de shell siempre con LF
+*.sh text eol=lf
+
+# Binarios
+*.png binary
+*.jpg binary
+*.gif binary
+*.ico binary
+*.fig binary
+*.db binary
+*.sqlite binary
+*.sqlite3 binary

@@ -1,0 +1,58 @@
+<Window x:Class="LaboratorioAsincrono.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LaboratorioAsincrono"
+        mc:Ignorable="d"
+        Title="Laboratorio del hilo de la interfaz"
+        Height="460"
+        Width="600">
+    <DockPanel Margin="16">
+        <!-- El reloj se actualiza cada décima de segundo: si se para, la ventana está bloqueada -->
+        <TextBlock x:Name="txtReloj"
+                   DockPanel.Dock="Top"
+                   FontSize="28"
+                   FontFamily="Consolas"
+                   HorizontalAlignment="Center"
+                   Margin="0,0,0,16" />
+
+        <StackPanel DockPanel.Dock="Top">
+            <Button x:Name="btnBloquear"
+                    Content="1. Calcular _bloqueando (3 s)"
+                    Margin="0,0,0,8"
+                    Click="btnBloquear_Click" />
+            <Button x:Name="btnAsincrono"
+                    Content="2. Calcular con _async y Task.Run (3 s)"
+                    Margin="0,0,0,8"
+                    Click="btnAsincrono_Click" />
+            <Button x:Name="btnOtroHilo"
+                    Content="3. Tocar un control desde _otro hilo"
+                    Margin="0,0,0,8"
+                    Click="btnOtroHilo_Click" />
+            <Button x:Name="btnDispatcher"
+                    Content="4. Tocar un control con _Dispatcher"
+                    Margin="0,0,0,8"
+                    Click="btnDispatcher_Click" />
+
+            <StackPanel Orientation="Horizontal"
+                        Margin="0,0,0,8">
+                <Button x:Name="btnDescargar"
+                        Content="5. _Descargar con progreso"
+                        Margin="0,0,8,0"
+                        Click="btnDescargar_Click" />
+                <Button x:Name="btnCancelar"
+                        Content="_Cancelar"
+                        IsEnabled="False"
+                        Click="btnCancelar_Click" />
+            </StackPanel>
+            <ProgressBar x:Name="prgDescarga"
+                         Height="16"
+                         Maximum="100"
+                         Margin="0,0,0,8" />
+        </StackPanel>
+
+        <TextBlock x:Name="txtResultado"
+                   TextWrapping="Wrap" />
+    </DockPanel>
+</Window>

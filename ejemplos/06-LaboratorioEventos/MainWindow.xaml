@@ -1,0 +1,118 @@
+<Window x:Class="LaboratorioEventos.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LaboratorioEventos"
+        mc:Ignorable="d"
+        Title="Laboratorio de eventos"
+        Height="520"
+        Width="860"
+        MinHeight="480"
+        MinWidth="760">
+    <Window.InputBindings>
+        <KeyBinding Key="L"
+                    Modifiers="Ctrl"
+                    Command="NavigationCommands.Refresh" />
+    </Window.InputBindings>
+    <Window.CommandBindings>
+        <CommandBinding Command="NavigationCommands.Refresh"
+                        Executed="Limpiar_Executed" />
+    </Window.CommandBindings>
+
+    <Grid Margin="16"
+          ColumnDefinitions="*, 16, *"
+          RowDefinitions="Auto, *">
+        <!-- 1. Eventos enrutados: el rastro de un clic -->
+        <StackPanel Grid.Row="0"
+                    Grid.Column="0">
+            <TextBlock Text="1. Eventos enrutados"
+                       FontWeight="SemiBold"
+                       Margin="0,0,0,8" />
+            <Border x:Name="bordeExterior"
+                    Background="LightSkyBlue"
+                    Padding="16"
+                    PreviewMouseDown="Rastro"
+                    MouseDown="Rastro">
+                <Border x:Name="bordeInterior"
+                        Background="LightGreen"
+                        Padding="16"
+                        PreviewMouseDown="Rastro"
+                        MouseDown="Rastro">
+                    <TextBlock x:Name="txtCentro"
+                               Text="Haz clic aquí"
+                               HorizontalAlignment="Center"
+                               PreviewMouseDown="Rastro"
+                               MouseDown="Rastro" />
+                </Border>
+            </Border>
+            <CheckBox x:Name="chkDetener"
+                      Content="Detener el evento en el borde interior"
+                      Margin="0,8,0,0" />
+        </StackPanel>
+
+        <ListBox x:Name="lstRastro"
+                 Grid.Row="1"
+                 Grid.Column="0"
+                 Margin="0,8,0,0" />
+
+        <!-- 2. Un manejador para varios botones y delegación -->
+        <StackPanel Grid.Row="0"
+                    Grid.Column="2">
+            <TextBlock Text="2. Un manejador para varios controles"
+                       FontWeight="SemiBold"
+                       Margin="0,0,0,8" />
+            <StackPanel Orientation="Horizontal"
+                        Button.Click="Categoria_Click">
+                <Button Content="Infantil"
+                        Tag="15"
+                        Padding="12,4"
+                        Margin="0,0,8,0" />
+                <Button Content="Adulto"
+                        Tag="35"
+                        Padding="12,4"
+                        Margin="0,0,8,0" />
+                <Button Content="Senior"
+                        Tag="25"
+                        Padding="12,4" />
+            </StackPanel>
+            <TextBlock x:Name="txtCuota"
+                       Text="Elige una categoría"
+                       Margin="0,8,0,16" />
+
+            <TextBlock Text="3. Teclado: solo cifras"
+                       FontWeight="SemiBold"
+                       Margin="0,0,0,8" />
+            <TextBox x:Name="txtSocios"
+                     MaxLength="3"
+                     HorizontalAlignment="Left"
+                     Width="80"
+                     PreviewTextInput="txtSocios_PreviewTextInput" />
+            <TextBlock Text="Ctrl+L vacía el rastro"
+                       Margin="0,8,0,16" />
+        </StackPanel>
+
+        <!-- 4. Ratón -->
+        <DockPanel Grid.Row="1"
+                   Grid.Column="2"
+                   Margin="0,8,0,0">
+            <TextBlock DockPanel.Dock="Top"
+                       Text="4. Ratón: clic para dibujar"
+                       FontWeight="SemiBold"
+                       Margin="0,0,0,8" />
+            <TextBlock x:Name="txtPosicion"
+                       DockPanel.Dock="Bottom"
+                       Text="Mueve el ratón sobre el recuadro"
+                       Margin="0,8,0,0" />
+            <Border BorderBrush="Gray"
+                    BorderThickness="1">
+                <Canvas x:Name="cnvPista"
+                        Background="White"
+                        ClipToBounds="True"
+                        MouseMove="cnvPista_MouseMove"
+                        MouseLeftButtonDown="cnvPista_MouseLeftButtonDown"
+                        MouseRightButtonDown="cnvPista_MouseRightButtonDown" />
+            </Border>
+        </DockPanel>
+    </Grid>
+</Window>

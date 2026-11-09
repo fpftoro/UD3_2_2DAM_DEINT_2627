@@ -1,0 +1,33 @@
+<Application x:Class="Club.Wpf.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="clr-namespace:Club.Nucleo.ViewModels;assembly=Club.Nucleo"
+             xmlns:vistas="clr-namespace:Club.Wpf.Vistas"
+             xmlns:conversores="clr-namespace:Club.Wpf.Conversores">
+    <!-- Sin StartupUri: la ventana se crea en OnStartup, donde se montan sus dependencias -->
+    <Application.Resources>
+        <conversores:CategoriaAColorConverter x:Key="CategoriaAColor" />
+        <BooleanToVisibilityConverter x:Key="BoolAVisibilidad" />
+
+        <!-- Navegación: cada ViewModel se dibuja con su vista -->
+        <DataTemplate DataType="{x:Type vm:SociosViewModel}">
+            <vistas:SociosView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:ResumenViewModel}">
+            <vistas:ResumenView />
+        </DataTemplate>
+
+        <!-- Un control con errores de validación muestra el primero en su ToolTip -->
+        <Style TargetType="TextBox">
+            <Setter Property="Margin"
+                    Value="0,0,0,8" />
+            <Style.Triggers>
+                <Trigger Property="Validation.HasError"
+                         Value="True">
+                    <Setter Property="ToolTip"
+                            Value="{Binding RelativeSource={RelativeSource Self}, Path=(Validation.Errors)[0].ErrorContent}" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Application.Resources>
+</Application>

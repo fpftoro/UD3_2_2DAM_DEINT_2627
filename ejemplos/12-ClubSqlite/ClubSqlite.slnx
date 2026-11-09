@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="Club.Datos/Club.Datos.csproj" />
+  <Project Path="Club.Nucleo/Club.Nucleo.csproj" />
+  <Project Path="Club.Pruebas/Club.Pruebas.csproj" />
+  <Project Path="Club.Wpf/Club.Wpf.csproj" />
+</Solution>

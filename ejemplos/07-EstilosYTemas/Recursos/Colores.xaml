@@ -1,0 +1,12 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- Color corporativo del club: la ventana lo cambia en tiempo de ejecución -->
+    <SolidColorBrush x:Key="ColorClub"
+                     Color="#2E7D32" />
+
+    <!-- Texto sobre el color del club -->
+    <SolidColorBrush x:Key="TextoSobreClub"
+                     Color="White" />
+
+</ResourceDictionary>

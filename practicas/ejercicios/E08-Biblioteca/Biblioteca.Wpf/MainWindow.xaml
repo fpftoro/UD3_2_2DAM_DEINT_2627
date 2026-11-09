@@ -1,0 +1,101 @@
+<Window x:Class="Biblioteca.Wpf.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Biblioteca"
+        Width="860"
+        Height="560"
+        MinWidth="720"
+        MinHeight="460">
+    <Grid Margin="16"
+          ColumnDefinitions="*, 16, 320"
+          RowDefinitions="*, Auto">
+
+        <DockPanel>
+            <Label Content="_Buscar por título o autor:"
+                   DockPanel.Dock="Top"
+                   Target="{Binding ElementName=txtBuscar}" />
+            <TextBox x:Name="txtBuscar"
+                     Margin="0,0,0,8"
+                     DockPanel.Dock="Top"
+                     TextChanged="txtBuscar_TextChanged" />
+            <TextBlock x:Name="txtResumen"
+                       Margin="0,8,0,0"
+                       DockPanel.Dock="Bottom" />
+            <ListBox x:Name="lstLibros"
+                     SelectionChanged="lstLibros_SelectionChanged" />
+        </DockPanel>
+
+        <StackPanel Grid.Column="2">
+            <StackPanel Margin="0,0,0,8"
+                        Orientation="Horizontal">
+                <Button x:Name="btnNuevo"
+                        Margin="0,0,8,0"
+                        Padding="12,4"
+                        Click="btnNuevo_Click"
+                        Content="_Nuevo" />
+                <Button x:Name="btnGuardar"
+                        Margin="0,0,8,0"
+                        Padding="12,4"
+                        Click="btnGuardar_Click"
+                        Content="_Guardar" />
+                <Button x:Name="btnEliminar"
+                        Padding="12,4"
+                        Click="btnEliminar_Click"
+                        Content="_Eliminar" />
+            </StackPanel>
+
+            <StackPanel x:Name="pnlFicha">
+                <TextBlock x:Name="txtEncabezado"
+                           Margin="0,0,0,8"
+                           FontSize="18"
+                           FontWeight="SemiBold" />
+                <Label Content="_Título:"
+                       Target="{Binding ElementName=txtTitulo}" />
+                <TextBox x:Name="txtTitulo"
+                         Margin="0,0,0,8" />
+                <Label Content="_Autor:"
+                       Target="{Binding ElementName=txtAutor}" />
+                <TextBox x:Name="txtAutor"
+                         Margin="0,0,0,8" />
+                <Label Content="Añ_o:"
+                       Target="{Binding ElementName=txtAnio}" />
+                <TextBox x:Name="txtAnio"
+                         Width="80"
+                         Margin="0,0,0,8"
+                         HorizontalAlignment="Left" />
+                <Label Content="Gé_nero:"
+                       Target="{Binding ElementName=cmbGenero}" />
+                <ComboBox x:Name="cmbGenero" />
+            </StackPanel>
+
+            <GroupBox Margin="0,16,0,0"
+                      Padding="8"
+                      Header="Préstamo">
+                <StackPanel>
+                    <Label Content="_Lector:"
+                           Target="{Binding ElementName=txtLector}" />
+                    <TextBox x:Name="txtLector"
+                             Margin="0,0,0,8"
+                             TextChanged="txtLector_TextChanged" />
+                    <StackPanel Orientation="Horizontal">
+                        <Button x:Name="btnPrestar"
+                                Margin="0,0,8,0"
+                                Padding="12,4"
+                                Click="btnPrestar_Click"
+                                Content="_Prestar" />
+                        <Button x:Name="btnDevolver"
+                                Padding="12,4"
+                                Click="btnDevolver_Click"
+                                Content="_Devolver" />
+                    </StackPanel>
+                </StackPanel>
+            </GroupBox>
+        </StackPanel>
+
+        <TextBlock x:Name="txtEstado"
+                   Grid.Row="1"
+                   Grid.ColumnSpan="3"
+                   Margin="0,12,0,0"
+                   Foreground="Gray" />
+    </Grid>
+</Window>

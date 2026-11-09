@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="Zoologicos.Datos/Zoologicos.Datos.csproj" />
+  <Project Path="Zoologicos.Nucleo/Zoologicos.Nucleo.csproj" />
+  <Project Path="Zoologicos.Pruebas/Zoologicos.Pruebas.csproj" />
+  <Project Path="Zoologicos.Wpf/Zoologicos.Wpf.csproj" />
+</Solution>

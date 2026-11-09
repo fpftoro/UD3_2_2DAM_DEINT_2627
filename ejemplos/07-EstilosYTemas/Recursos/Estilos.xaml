@@ -1,0 +1,75 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- Separaciones de la rejilla de 8 de la UD1. Están en este diccionario porque
+         los estilos de abajo las usan con StaticResource -->
+    <Thickness x:Key="MargenCampo">0,0,0,8</Thickness>
+    <Thickness x:Key="MargenSeccion">0,0,0,16</Thickness>
+
+    <!-- Estilo con clave: solo lo usan los TextBlock que lo piden -->
+    <Style x:Key="Titulo"
+           TargetType="TextBlock">
+        <Setter Property="FontSize"
+                Value="22" />
+        <Setter Property="FontWeight"
+                Value="SemiBold" />
+        <Setter Property="Margin"
+                Value="{StaticResource MargenSeccion}" />
+    </Style>
+
+    <!-- Estilo basado en otro: hereda sus Setter y cambia o añade los suyos -->
+    <Style x:Key="Subtitulo"
+           TargetType="TextBlock"
+           BasedOn="{StaticResource Titulo}">
+        <Setter Property="FontSize"
+                Value="16" />
+        <Setter Property="Margin"
+                Value="{StaticResource MargenCampo}" />
+    </Style>
+
+    <!-- Estilo implícito (sin clave): se aplica a todos los TextBox.
+         BasedOn conserva el aspecto del tema (Fluent) y solo añade el margen -->
+    <Style TargetType="TextBox"
+           BasedOn="{StaticResource {x:Type TextBox}}">
+        <Setter Property="Margin"
+                Value="{StaticResource MargenCampo}" />
+    </Style>
+
+    <!-- Botón principal: usa el color del club con DynamicResource para seguir sus cambios -->
+    <Style x:Key="BotonPrincipal"
+           TargetType="Button"
+           BasedOn="{StaticResource {x:Type Button}}">
+        <Setter Property="Background"
+                Value="{DynamicResource ColorClub}" />
+        <Setter Property="Foreground"
+                Value="{DynamicResource TextoSobreClub}" />
+        <Setter Property="Padding"
+                Value="16,6" />
+        <Setter Property="FontWeight"
+                Value="SemiBold" />
+        <Style.Triggers>
+            <!-- Desencadenador: mientras el botón está deshabilitado, se atenúa -->
+            <Trigger Property="IsEnabled"
+                     Value="False">
+                <Setter Property="Opacity"
+                        Value="0.5" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <!-- Tarjeta: un Border con el borde del color del club -->
+    <Style x:Key="Tarjeta"
+           TargetType="Border">
+        <Setter Property="BorderBrush"
+                Value="{DynamicResource ColorClub}" />
+        <Setter Property="BorderThickness"
+                Value="1" />
+        <Setter Property="CornerRadius"
+                Value="6" />
+        <Setter Property="Padding"
+                Value="16" />
+        <Setter Property="Margin"
+                Value="{StaticResource MargenSeccion}" />
+    </Style>
+
+</ResourceDictionary>

@@ -1,0 +1,64 @@
+<Window x:Class="Navegacion.Ventanas.VentanaNuevoSocio"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="Nuevo socio"
+        SizeToContent="WidthAndHeight"
+        ResizeMode="NoResize"
+        ShowInTaskbar="False"
+        WindowStartupLocation="CenterOwner">
+    <Grid Margin="16"
+          ColumnDefinitions="Auto, 240"
+          RowDefinitions="Auto, Auto, Auto, Auto">
+        <Label Grid.Row="0"
+               Grid.Column="0"
+               Content="_Nombre:"
+               Target="{Binding ElementName=txtNombre}" />
+        <TextBox x:Name="txtNombre"
+                 Grid.Row="0"
+                 Grid.Column="1"
+                 Margin="0,0,0,8" />
+
+        <Label Grid.Row="1"
+               Grid.Column="0"
+               Content="_Categoría:"
+               Target="{Binding ElementName=cmbCategoria}" />
+        <ComboBox x:Name="cmbCategoria"
+                  Grid.Row="1"
+                  Grid.Column="1"
+                  SelectedIndex="1"
+                  Margin="0,0,0,8">
+            <ComboBoxItem Content="Infantil" />
+            <ComboBoxItem Content="Adulto" />
+            <ComboBoxItem Content="Senior" />
+        </ComboBox>
+
+        <Label Grid.Row="2"
+               Grid.Column="0"
+               Content="_Antigüedad (años):"
+               Target="{Binding ElementName=txtAntiguedad}" />
+        <TextBox x:Name="txtAntiguedad"
+                 Grid.Row="2"
+                 Grid.Column="1"
+                 Text="0"
+                 Margin="0,0,0,16" />
+
+        <!-- IsDefault: Intro pulsa Aceptar · IsCancel: Esc pulsa Cancelar y cierra -->
+        <StackPanel Grid.Row="3"
+                    Grid.Column="1"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Right">
+            <Button x:Name="btnAceptar"
+                    Content="Aceptar"
+                    IsDefault="True"
+                    MinWidth="80"
+                    Margin="0,0,8,0"
+                    Click="btnAceptar_Click" />
+            <Button Content="Cancelar"
+                    IsCancel="True"
+                    MinWidth="80" />
+        </StackPanel>
+    </Grid>
+</Window>

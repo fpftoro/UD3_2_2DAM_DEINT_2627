@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="Biblioteca.Nucleo/Biblioteca.Nucleo.csproj" />
+  <Project Path="Biblioteca.Pruebas/Biblioteca.Pruebas.csproj" />
+  <Project Path="Biblioteca.Wpf/Biblioteca.Wpf.csproj" />
+</Solution>

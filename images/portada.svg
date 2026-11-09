@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400" width="1200" height="400" role="img" aria-labelledby="t d">
+  <title id="t">UD3 · Interfaces gráficas con WPF: de los eventos a MVVM</title>
+  <desc id="d">Portada de la unidad UD3 del módulo Desarrollo de Interfaces: una ventana de escritorio con un fragmento de XAML y el código que lo acompaña.</desc>
+  <defs>
+    <linearGradient id="fondo" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1a1530"/>
+      <stop offset="1" stop-color="#2b1a5c"/>
+    </linearGradient>
+    <linearGradient id="acento" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#9b7bff"/>
+      <stop offset="1" stop-color="#4fc3f7"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="400" fill="url(#fondo)"/>
+  <!-- Retícula decorativa de 8 px ampliada (múltiplos de 40) -->
+  <g stroke="#ffffff" stroke-opacity="0.05">
+    <path d="M0 40H1200M0 80H1200M0 120H1200M0 160H1200M0 200H1200M0 240H1200M0 280H1200M0 320H1200M0 360H1200"/>
+    <path d="M80 0V400M160 0V400M240 0V400M320 0V400M400 0V400M480 0V400M560 0V400M640 0V400M720 0V400M800 0V400M880 0V400M960 0V400M1040 0V400M1120 0V400"/>
+  </g>
+
+  <!-- Texto -->
+  <g font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">
+    <text x="60" y="80" fill="#cfc6f5" font-size="22" letter-spacing="3">DESARROLLO DE INTERFACES · 2DAM</text>
+    <rect x="60" y="100" width="120" height="6" rx="3" fill="url(#acento)"/>
+    <text x="60" y="185" fill="#ffffff" font-size="64" font-weight="700">UD3</text>
+    <text x="60" y="240" fill="#ffffff" font-size="34" font-weight="600">Interfaces gráficas con WPF:</text>
+    <text x="60" y="282" fill="#ffffff" font-size="34" font-weight="600">de los eventos a MVVM</text>
+    <text x="60" y="340" fill="#4fc3f7" font-size="22" font-weight="600">RA1 · Genera interfaces con editores visuales</text>
+  </g>
+
+  <!-- Motivo: ventana WPF con su XAML y su code-behind -->
+  <g transform="translate(680,70)" font-family="Consolas, 'Courier New', monospace" font-size="15">
+    <rect width="440" height="260" rx="10" fill="#ffffff" fill-opacity="0.08" stroke="#cfc6f5" stroke-width="2"/>
+    <rect width="440" height="34" rx="10" fill="#ffffff" fill-opacity="0.12"/>
+    <rect x="16" y="11" width="140" height="12" rx="6" fill="#cfc6f5" fill-opacity="0.6"/>
+    <g stroke="#cfc6f5" stroke-width="2" fill="none">
+      <path d="M352 17h12"/>
+      <rect x="380" y="11" width="12" height="12"/>
+      <path d="M408 11l12 12M420 11l-12 12"/>
+    </g>
+    <!-- Vista: controles -->
+    <rect x="16" y="50" width="180" height="194" rx="6" fill="#ffffff" fill-opacity="0.06" stroke="#4fc3f7" stroke-dasharray="4 4"/>
+    <rect x="30" y="66" width="152" height="28" rx="4" fill="#ffffff" fill-opacity="0.12"/>
+    <rect x="30" y="108" width="100" height="28" rx="14" fill="#4fc3f7"/>
+    <rect x="30" y="150" width="152" height="12" rx="6" fill="#cfc6f5" fill-opacity="0.5"/>
+    <rect x="30" y="172" width="110" height="12" rx="6" fill="#cfc6f5" fill-opacity="0.35"/>
+    <!-- XAML y C# -->
+    <text x="214" y="76" fill="#9b7bff">&lt;Button</text>
+    <text x="226" y="98" fill="#cfc6f5">Content="Guardar"</text>
+    <text x="226" y="120" fill="#4fc3f7">Click="…"/&gt;</text>
+    <path d="M214 140h210" stroke="#cfc6f5" stroke-opacity="0.4"/>
+    <text x="214" y="168" fill="#9b7bff">void</text>
+    <text x="262" y="168" fill="#ffffff">Guardar_Click</text>
+    <text x="214" y="190" fill="#cfc6f5">{</text>
+    <text x="226" y="212" fill="#4fc3f7">…</text>
+    <text x="214" y="234" fill="#cfc6f5">}</text>
+  </g>
+</svg>

@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Club.Datos\Club.Datos.csproj" />
+    <ProjectReference Include="..\Club.Nucleo\Club.Nucleo.csproj" />
+  </ItemGroup>
+
+  <!-- La base de datos está en el repositorio y se copia junto al ejecutable al compilar.
+       PreserveNewest: no se sobrescribe la copia si ya se ha modificado al usar la aplicación -->
+  <ItemGroup>
+    <None Update="Datos\club.db"
+          CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+</Project>

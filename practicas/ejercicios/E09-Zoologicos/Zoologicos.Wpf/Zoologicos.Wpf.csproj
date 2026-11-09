@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Zoologicos.Datos\Zoologicos.Datos.csproj" />
+    <ProjectReference Include="..\Zoologicos.Nucleo\Zoologicos.Nucleo.csproj" />
+  </ItemGroup>
+
+  <!-- La base de datos está en el repositorio y se copia junto al ejecutable al compilar.
+       PreserveNewest: no se sobrescribe la copia si ya se ha modificado al usar la aplicación -->
+  <ItemGroup>
+    <None Update="Datos\zoologicos.db"
+          CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+</Project>

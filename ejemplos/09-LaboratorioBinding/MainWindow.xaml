@@ -1,0 +1,151 @@
+<Window x:Class="LaboratorioBinding.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LaboratorioBinding"
+        mc:Ignorable="d"
+        d:DataContext="{d:DesignInstance Type=local:DatosLaboratorio}"
+        Title="Laboratorio de binding"
+        Height="560"
+        Width="720">
+    <TabControl Margin="8">
+        <!-- 1. Binding entre controles con ElementName -->
+        <TabItem Header="_Entre controles">
+            <StackPanel Margin="16">
+                <Label Content="Volumen:"
+                       Target="{Binding ElementName=sldVolumen}" />
+                <Slider x:Name="sldVolumen"
+                        Minimum="0"
+                        Maximum="100"
+                        Value="40"
+                        Margin="0,0,0,8" />
+                <!-- OneWay: el texto sigue al deslizador -->
+                <TextBlock Text="{Binding ElementName=sldVolumen, Path=Value, StringFormat='Volumen: {0:0} %'}"
+                           Margin="0,0,0,16" />
+
+                <!-- TwoWay: escribir en la caja mueve el deslizador, y al revés -->
+                <Label Content="Escribe un valor y pulsa Tab:"
+                       Target="{Binding ElementName=txtVolumen}" />
+                <TextBox x:Name="txtVolumen"
+                         Text="{Binding ElementName=sldVolumen, Path=Value, StringFormat=0}"
+                         Width="80"
+                         HorizontalAlignment="Left"
+                         Margin="0,0,0,16" />
+
+                <!-- Cualquier propiedad de dependencia puede ser destino -->
+                <CheckBox x:Name="chkGrande"
+                          Content="Texto _grande" />
+                <TextBlock Text="Este texto crece con la casilla"
+                           Margin="0,8,0,0">
+                    <TextBlock.Style>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="FontSize"
+                                    Value="12" />
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding ElementName=chkGrande, Path=IsChecked}"
+                                             Value="True">
+                                    <Setter Property="FontSize"
+                                            Value="24" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBlock.Style>
+                </TextBlock>
+            </StackPanel>
+        </TabItem>
+
+        <!-- 2. Modos y UpdateSourceTrigger sobre la propiedad Nombre del DataContext -->
+        <TabItem Header="_Modos">
+            <Grid Margin="16"
+                  ColumnDefinitions="Auto, *"
+                  RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto">
+                <Label Grid.Row="0"
+                       Content="TwoWay, al escribir:" />
+                <TextBox Grid.Row="0"
+                         Grid.Column="1"
+                         Margin="0,0,0,8"
+                         Text="{Binding Nombre, UpdateSourceTrigger=PropertyChanged}" />
+
+                <Label Grid.Row="1"
+                       Content="TwoWay, al salir:" />
+                <TextBox Grid.Row="1"
+                         Grid.Column="1"
+                         Margin="0,0,0,8"
+                         Text="{Binding Nombre}" />
+
+                <Label Grid.Row="2"
+                       Content="OneWay:" />
+                <TextBox Grid.Row="2"
+                         Grid.Column="1"
+                         Margin="0,0,0,8"
+                         Text="{Binding Nombre, Mode=OneWay}" />
+
+                <Label Grid.Row="3"
+                       Content="OneTime:" />
+                <TextBox Grid.Row="3"
+                         Grid.Column="1"
+                         Margin="0,0,0,8"
+                         Text="{Binding Nombre, Mode=OneTime}" />
+
+                <TextBlock Grid.Row="4"
+                           Grid.ColumnSpan="2"
+                           Margin="0,0,0,16"
+                           FontWeight="SemiBold"
+                           Text="{Binding Nombre, StringFormat='Nombre en el objeto: «{0}»'}" />
+
+                <!-- OneWayToSource: la caja escribe en el objeto, pero no lee de él -->
+                <Label Grid.Row="5"
+                       Content="OneWayToSource:" />
+                <TextBox Grid.Row="5"
+                         Grid.Column="1"
+                         Margin="0,0,0,8"
+                         Text="{Binding Comentario, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}" />
+
+                <TextBlock Grid.Row="6"
+                           Grid.ColumnSpan="2"
+                           FontWeight="SemiBold"
+                           Text="{Binding Comentario, StringFormat='Comentario en el objeto: «{0}»'}" />
+            </Grid>
+        </TabItem>
+
+        <!-- 3. Colección observable con DataTemplate y casilla «Todos» -->
+        <TabItem Header="E_xtras">
+            <DockPanel Margin="16">
+                <CheckBox DockPanel.Dock="Top"
+                          Content="_Todos los extras"
+                          FontWeight="SemiBold"
+                          Margin="0,0,0,8"
+                          IsChecked="{Binding TodosSeleccionados}" />
+                <StackPanel DockPanel.Dock="Bottom"
+                            Orientation="Horizontal"
+                            Margin="0,8,0,0">
+                    <Button x:Name="btnAnadir"
+                            Content="_Añadir «Agua»"
+                            Padding="12,4"
+                            Margin="0,0,16,0"
+                            Click="btnAnadir_Click" />
+                    <TextBlock VerticalAlignment="Center"
+                               FontWeight="SemiBold"
+                               Text="{Binding Total, StringFormat='Total de extras: {0:0.00} €'}" />
+                </StackPanel>
+                <!-- Un elemento por extra, dibujado con la plantilla -->
+                <ItemsControl ItemsSource="{Binding Extras}"
+                              Margin="16,0,0,0">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate DataType="local:Extra">
+                            <CheckBox IsChecked="{Binding Seleccionado}"
+                                      Margin="0,0,0,4">
+                                <TextBlock>
+                                    <Run Text="{Binding Nombre, Mode=OneWay}" />
+                                    <Run Text="{Binding Precio, Mode=OneWay, StringFormat='({0:0.00} €)'}"
+                                         Foreground="Gray" />
+                                </TextBlock>
+                            </CheckBox>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </DockPanel>
+        </TabItem>
+    </TabControl>
+</Window>

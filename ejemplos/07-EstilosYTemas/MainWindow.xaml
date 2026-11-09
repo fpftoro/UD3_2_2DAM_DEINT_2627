@@ -1,0 +1,125 @@
+<Window x:Class="EstilosYTemas.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EstilosYTemas"
+        mc:Ignorable="d"
+        Title="Estilos y temas"
+        Height="480"
+        Width="640"
+        MinHeight="420"
+        MinWidth="560"
+        Closing="Window_Closing">
+    <Window.Resources>
+        <!-- Recurso local: solo lo ven los elementos de esta ventana -->
+        <Style x:Key="Nota"
+               TargetType="TextBlock">
+            <Setter Property="FontStyle"
+                    Value="Italic" />
+            <Setter Property="TextWrapping"
+                    Value="Wrap" />
+            <Setter Property="Opacity"
+                    Value="0.8" />
+        </Style>
+    </Window.Resources>
+
+    <DockPanel>
+        <!-- Cabecera con el color del club: DynamicResource sigue los cambios -->
+        <Border DockPanel.Dock="Top"
+                Background="{DynamicResource ColorClub}"
+                Padding="16,12">
+            <TextBlock Text="Club Deportivo · Ajustes"
+                       Foreground="{DynamicResource TextoSobreClub}"
+                       FontSize="18"
+                       FontWeight="SemiBold" />
+        </Border>
+
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <StackPanel Margin="16">
+                <TextBlock Text="Apariencia"
+                           Style="{StaticResource Titulo}" />
+
+                <Border Style="{StaticResource Tarjeta}">
+                    <Grid ColumnDefinitions="Auto, *"
+                          RowDefinitions="Auto, Auto">
+                        <Label Grid.Row="0"
+                               Grid.Column="0"
+                               Content="_Tema:"
+                               Target="{Binding ElementName=cmbTema}" />
+                        <ComboBox x:Name="cmbTema"
+                                  Grid.Row="0"
+                                  Grid.Column="1"
+                                  Margin="{StaticResource MargenCampo}"
+                                  SelectionChanged="cmbTema_SelectionChanged">
+                            <ComboBoxItem Content="Sistema" />
+                            <ComboBoxItem Content="Claro" />
+                            <ComboBoxItem Content="Oscuro" />
+                        </ComboBox>
+
+                        <Label Grid.Row="1"
+                               Grid.Column="0"
+                               Content="Color del club:" />
+                        <StackPanel x:Name="pnlColores"
+                                    Grid.Row="1"
+                                    Grid.Column="1"
+                                    Orientation="Horizontal"
+                                    RadioButton.Checked="Color_Checked">
+                            <RadioButton x:Name="rbVerde"
+                                         Content="_Verde"
+                                         Tag="#2E7D32"
+                                         Margin="0,0,16,0" />
+                            <RadioButton x:Name="rbAzul"
+                                         Content="_Azul"
+                                         Tag="#1565C0"
+                                         Margin="0,0,16,0" />
+                            <RadioButton x:Name="rbNaranja"
+                                         Content="_Naranja"
+                                         Tag="#E65100" />
+                        </StackPanel>
+                    </Grid>
+                </Border>
+
+                <TextBlock Text="StaticResource frente a DynamicResource"
+                           Style="{StaticResource Subtitulo}" />
+                <UniformGrid Columns="2"
+                             Margin="{StaticResource MargenSeccion}">
+                    <Border Background="{StaticResource ColorClub}"
+                            Padding="8"
+                            Margin="0,0,8,0">
+                        <TextBlock Text="StaticResource: se queda con el primer color"
+                                   Foreground="White"
+                                   TextWrapping="Wrap" />
+                    </Border>
+                    <Border Background="{DynamicResource ColorClub}"
+                            Padding="8">
+                        <TextBlock Text="DynamicResource: cambia con el color elegido"
+                                   Foreground="White"
+                                   TextWrapping="Wrap" />
+                    </Border>
+                </UniformGrid>
+
+                <TextBlock Text="Estilos aplicados"
+                           Style="{StaticResource Subtitulo}" />
+                <Border Style="{StaticResource Tarjeta}">
+                    <StackPanel>
+                        <!-- Los TextBox reciben el estilo implícito sin pedirlo -->
+                        <TextBox Text="Lucía Pérez" />
+                        <TextBox Text="lucia@ejemplo.es" />
+                        <StackPanel Orientation="Horizontal">
+                            <Button Content="Guardar"
+                                    Style="{StaticResource BotonPrincipal}"
+                                    Margin="0,0,8,0" />
+                            <Button Content="Deshabilitado"
+                                    Style="{StaticResource BotonPrincipal}"
+                                    IsEnabled="False" />
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+
+                <TextBlock Style="{StaticResource Nota}"
+                           Text="El tamaño, la posición, el tema y el color se guardan al cerrar y se recuperan al abrir." />
+            </StackPanel>
+        </ScrollViewer>
+    </DockPanel>
+</Window>

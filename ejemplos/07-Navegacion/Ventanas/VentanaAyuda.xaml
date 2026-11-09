@@ -1,0 +1,26 @@
+<Window x:Class="Navegacion.Ventanas.VentanaAyuda"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="Ayuda"
+        Height="260"
+        Width="360"
+        ShowInTaskbar="False"
+        WindowStartupLocation="CenterOwner">
+    <ScrollViewer Margin="16"
+                  VerticalScrollBarVisibility="Auto">
+        <TextBlock TextWrapping="Wrap">
+            <Bold>Inicio</Bold> muestra un resumen del club.
+            <LineBreak />
+            <LineBreak />
+            <Bold>Socios</Bold> muestra la lista. Haz doble clic en un socio o pulsa
+            <Italic>Ver ficha</Italic> para ver sus datos, y <Italic>Volver</Italic> o la flecha
+            de la barra de navegación para regresar.
+            <LineBreak />
+            <LineBreak />
+            Esta ventana no es modal: puedes seguir usando la principal mientras está abierta.
+        </TextBlock>
+    </ScrollViewer>
+</Window>
