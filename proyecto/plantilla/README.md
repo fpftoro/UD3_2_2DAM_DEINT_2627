@@ -90,17 +90,7 @@
 <!-- Las decisiones que has tomado y por qué: comandos a mano o con el CommunityToolkit, navegación con
      DataTemplate o ventanas, cómo une el modelo con la base de datos, qué va en una transacción… -->
 
-## Pruebas
-
-<!-- 1. Pruebas unitarias de los ViewModels: tabla con cada prueba nueva, el ViewModel que prueba y qué comprueba
-        (disponibilidad y efecto de un comando, validación, error del repositorio).
-     2. Pruebas manuales: lista de comprobación ejecutada sobre la versión entregada. -->
-
-| Prueba unitaria | ViewModel | Qué comprueba |
-|-----------------|-----------|---------------|
-| | | |
-
-### Pruebas manuales
+## Pruebas manuales
 
 <!-- Lista de comprobación ejecutada sobre la versión entregada: una fila por operación del user flow, el inicio
      de sesión (correcto y con una contraseña equivocada) y cada caso de error (validación, regla del modelo,
@@ -112,5 +102,4 @@
 
 ## Cómo ejecutarlo
 
-<!-- Proyecto de inicio, qué hace falta, cómo volver a los datos de ejemplo y la salida de dotnet test
-     (las pruebas de los ViewModels pasan). -->
+<!-- Proyecto de inicio, qué hace falta, cómo volver a los datos de ejemplo. -->

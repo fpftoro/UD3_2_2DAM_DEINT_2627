@@ -19,7 +19,7 @@ Las fechas de la entrega y de las exposiciones están en la tarea de Moodle.
 - **Tu proyecto de la UD1:** el *user flow*, las pantallas del prototipo (1280 × 720) y el UI Kit (colores, tipografía, espaciado, componentes).
 - **Nada más.** Las entidades, las pantallas y las operaciones salen de ese diseño, que ya pedía al menos dos entidades relacionadas con listado, búsqueda, alta, modificación y baja. Si tu diseño tiene más de dos, elige las dos con las que funciona tu *user flow*. El modelo lo programas aquí (requisito 1).
 - **Reparto de las dos entidades.** Tú decides cuál programas con eventos y *code-behind* (la «entidad con eventos») y cuál con MVVM (la «entidad con MVVM»). Lo anotas y lo justificas en el README. La tabla de [Requisitos](#requisitos) dice qué hace cada parte.
-- La tarea de Classroom trae solo el `README.md` de entrega. **Crea en ella la solución** `<TuDominio>.slnx` con un proyecto de biblioteca `<TuDominio>.Logica` y otro de pruebas xUnit `<TuDominio>.Pruebas`, y haz un primer commit en `main` (`chore: crear la solución`). Es el único commit que se hace directamente en `main` (ver [Trabajo con Git](#trabajo-con-git)).
+- La tarea de Classroom trae solo el `README.md` de entrega. **Crea en ella la solución** `<TuDominio>.slnx` con un proyecto de biblioteca `<TuDominio>.Logica`, y haz un primer commit en `main` (`chore: crear la solución`). Es el único commit que se hace directamente en `main` (ver [Trabajo con Git](#trabajo-con-git)).
 - El ejemplo resuelto del profesor (un club deportivo) se publicará como modelo. **No lo copies**: tu dominio es otro.
 
 Si al programarla cambias algo de tu diseño de la UD1, anótalo en el README.
@@ -30,11 +30,7 @@ flowchart LR
     W --> D["TuDominio.Datos<br/>SQLite"]
     D --> N
     N --> L["TuDominio.Logica<br/>entidades, reglas, gestor"]
-    P["TuDominio.Pruebas<br/>ViewModels"] --> L
-    P --> N
 ```
-
-**Pruebas.** Escribes **pruebas unitarias de los *ViewModels*** (requisito 14), en el mismo proyecto `<TuDominio>.Pruebas`, con **dobles de prueba** escritos por ti: un repositorio falso y un servicio de diálogos falso. **No** se piden pruebas de integración (contra la base de datos real) ni de extremo a extremo (con la ventana): la interfaz y la base de datos se comprueban con las **pruebas manuales** (requisito 15).
 
 ## Planificación en Trello
 
@@ -69,7 +65,6 @@ El repositorio se trabaja como en el material de Git visto en clase: ramas por f
 | `docs` | Solo documentación | `docs(readme): añadir el diagrama de la base de datos` |
 | `style` | Formato, sin cambiar la lógica | `style(vistas): ordenar los atributos del XAML` |
 | `refactor` | Reorganizar el código sin cambiar lo que hace | `refactor(socios): llevar la validación al ViewModel` |
-| `test` | Añadir o cambiar pruebas | `test(gestor): comprobar la baja de un socio con reservas` |
 | `chore` | Mantenimiento: proyectos, paquetes, configuración | `chore(datos): añadir Microsoft.Data.Sqlite` |
 
 - El **ámbito** es la parte de la aplicación que cambia: una entidad o vista (`socios`, `reservas`, `login`), `datos`, `ui`, `readme`…
@@ -135,48 +130,18 @@ Empieza por la parte con eventos mientras se explican los temas 2 a 7 y sigue co
 11. **Aspecto.** Los colores, la tipografía y el espaciado de tu UI Kit, como recursos en diccionarios (`Recursos/`) incorporados en `App.xaml`, con estilos (`BasedOn` donde encaje) y sin repetir propiedades en los controles; teclas de acceso, orden de tabulación lógico y `AutomationProperties.Name` en los controles que no tienen texto; el idioma de los *bindings* fijado al arrancar.
 12. **Configuración.** La ventana recuerda su tamaño y su posición (JSON en `%AppData%`).
 13. **Errores.** Ningún error de validación, de una regla del modelo o de la base de datos cierra la aplicación: se muestra en el campo o con un mensaje. Si la base de datos no se puede abrir al arrancar, la aplicación avisa y se cierra de forma ordenada.
-14. **Pruebas unitarias.** Son **código C# con xUnit** que crea un *ViewModel*, hace lo que haría el usuario (ejecutar un comando, escribir en una propiedad) y comprueba el resultado con `Assert`. Se ejecutan con `dotnet test`, sin abrir la ventana y sin usar la base de datos. Van en `<TuDominio>.Pruebas`, que referencia a `.Logica` y a `.Nucleo`. No son las pruebas manuales del requisito 15, donde ejecutas tú la aplicación.
-
-    - **A qué *ViewModels*:** a los de la parte con MVVM. Con **al menos dos** basta: elige los que tengan más lógica.
-    - **Cuántas:** **ocho o más** en total. Entre ellas tiene que haber **al menos una prueba de cada una de estas cuatro situaciones**:
-
-        | Situación | Qué compruebas | Ejemplo en un club | Ejemplo en una biblioteca |
-        |-----------|----------------|--------------------|---------------------------|
-        | **Disponibilidad** | Si el botón estaría habilitado o no (`CanExecute`) | Sin socio seleccionado, `EliminarCommand.CanExecute(null)` es `false`; al seleccionar uno, es `true` | Sin libro seleccionado, `PrestarCommand` no se puede ejecutar |
-        | **Efecto** | Qué cambia al ejecutar el comando | Tras ejecutar `GuardarCommand` con un nombre válido, el repositorio falso tiene un socio más | Tras ejecutar `PrestarCommand`, el libro figura como prestado |
-        | **Validación** | Que unos datos incorrectos marcan error y no se guardan | Con el nombre vacío, `HasErrors` es `true` y `GuardarCommand` no se puede ejecutar | Con un ISBN de 5 cifras, el formulario marca error |
-        | **Error del repositorio** | Que si los datos fallan, se avisa y la aplicación no se cae | El repositorio falso lanza un error al guardar; el servicio de diálogos falso recibe un mensaje y no salta ninguna excepción | El repositorio falla al prestar; se muestra un aviso y la lista no cambia |
-
-    - **Con qué:** el *ViewModel* es el real, pero lo que habla con el exterior lo sustituyes por **dobles de prueba que escribes tú**: un **repositorio falso**, que guarda los datos en una lista en memoria (y puede configurarse para fallar), y un **servicio de diálogos falso**, que responde lo que le indiques (sí o no) y apunta los mensajes que recibe. Así la prueba controla lo que el usuario «contesta» y comprueba lo que se le habría mostrado.
-    - **Nombre:** dice qué se prueba, en qué situación y qué se espera: `Eliminar_SiElUsuarioNoConfirma_NoBorraNada`.
-
-    Un ejemplo completo, de la situación «efecto» (la baja de un socio cuando el usuario no confirma). Haz lo mismo con tu dominio:
-
-    ```csharp
-    [Fact]
-    public void Eliminar_SiElUsuarioNoConfirma_NoBorraNada()
-    {
-        var repositorio = new RepositorioFalso();                  // con tres socios de ejemplo
-        var dialogos = new DialogosFalsos { Respuesta = false };   // el usuario dice que no
-        var vm = new SociosViewModel(repositorio, dialogos);
-        vm.SocioSeleccionado = vm.Socios[0];
-        vm.EliminarCommand.Execute(null);                          // pulsar Eliminar
-        Assert.Equal(3, repositorio.Socios.Count);                 // no se borró nada
-    }
-    ```
-
-15. **Pruebas manuales.** Una lista de comprobación en el README, ejecutada sobre la versión entregada, con cada operación de tu *user flow*, el inicio de sesión y sus casos de error.
+14. **Pruebas manuales.** Una lista de comprobación en el README, ejecutada sobre la versión entregada, con cada operación de tu *user flow*, el inicio de sesión y sus casos de error.
 
 ## Contrato de entrega
 
 | Elemento | Debe ser |
 |----------|----------|
-| Solución | `<TuDominio>.slnx` en la raíz del repositorio, con `.Logica`, `.Nucleo`, `.Datos`, `.Wpf` y `.Pruebas` (que referencia a `.Logica` y a `.Nucleo`) |
+| Solución | `<TuDominio>.slnx` en la raíz del repositorio, con `.Logica`, `.Nucleo`, `.Datos` y `.Wpf` |
 | Base de datos | `<TuDominio>.Wpf/Datos/<tudominio>.db`, en el repositorio, con datos de ejemplo y el usuario de prueba |
 | Inicio de sesión | Vista de inicio de sesión con un `PasswordBox` llamado `pwdContrasena`; tabla `Usuarios` con sal y *hash* |
 | Historial | En `main`: el primer commit con la solución vacía (`chore: crear la solución`) y, después, las fusiones de las ramas `feat/…`. Mensajes con la convención `tipo(ámbito): descripción` |
 | Ramas | Una rama `feat/<nombre-funcionalidad>` por funcionalidad, integrada con una *pull request* y *merge commit* |
-| Secciones del README | `## Dominio y cambios respecto al diseño`, `## Planificación`, `## Parte con eventos`, `## Arquitectura`, `## Base de datos`, `## Inicio de sesión`, `## Interfaz`, `## Decisiones técnicas`, `## Pruebas`, `## Cómo ejecutarlo` |
+| Secciones del README | `## Dominio y cambios respecto al diseño`, `## Planificación`, `## Parte con eventos`, `## Arquitectura`, `## Base de datos`, `## Inicio de sesión`, `## Interfaz`, `## Decisiones técnicas`, `## Pruebas manuales`, `## Cómo ejecutarlo` |
 
 ## Exposición
 
@@ -193,7 +158,7 @@ Prepara la aplicación compilada y abierta, la solución abierta en Visual Studi
 
 ## Comprueba tu solución
 
-- [ ] Compila sin avisos y todas las pruebas pasan (`dotnet test`): las de los *ViewModels*, que no abren ninguna ventana ni la base de datos.
+- [ ] Compila sin avisos.
 - [ ] `<TuDominio>.Logica` no usa nada de WPF ni de la consola, y sus reglas lanzan excepciones propias con un mensaje claro.
 - [ ] La vista de la entidad con eventos funciona con manejadores de eventos y la de la entidad con MVVM, con *binding* y comandos; las dos guardan en la misma base de datos.
 - [ ] En la pestaña **Pull requests** de tu repositorio (filtro *Closed*) hay una por funcionalidad, todas fusionadas; en `main` no hay commits tuyos fuera de las ramas, salvo el primero.
@@ -227,7 +192,6 @@ Prepara la aplicación compilada y abierta, la solución abierta en Visual Studi
 - ✅ Los datos se guardan en SQLite con consultas con parámetros, `JOIN`, claves ajenas y una transacción
 - ✅ El inicio de sesión comprueba la contraseña con un *hash* con sal, sin guardarla ni mostrarla en claro
 - ✅ La ventana recuerda su configuración y los errores se tratan sin cerrar la aplicación
-- ✅ Los *ViewModels* tienen pruebas unitarias con dobles de prueba: un repositorio falso y unos diálogos falsos
 - ✅ El README documenta las decisiones y las pruebas manuales
 - ✅ Trabajas con una rama `feat/…` por funcionalidad, integrada con *pull request*, con un historial progresivo y mensajes que siguen la convención vista en clase
 
@@ -238,5 +202,4 @@ Sin ellos, el proyecto se califica como insuficiente, sea cual sea la puntuació
 - La solución compila y la aplicación arranca.
 - La aplicación tiene sus dos partes: la entidad con eventos y la entidad con MVVM, elegidas por ti y justificadas en el README.
 - Los datos se guardan en SQLite.
-- Hay pruebas unitarias de los *ViewModels* y pasan.
 - Has hecho la exposición.
