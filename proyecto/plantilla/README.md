@@ -6,54 +6,44 @@
 ## Dominio y cambios respecto al diseño
 
 <!-- 1. Una frase sobre tu aplicación y sus dos entidades.
-     2. Qué has cambiado respecto al prototipo de la UD1 y por qué.
-     3. Las entidades de tu modelo, su relación y las reglas que has programado. -->
+     2. Las dos pantallas que has elegido (además del inicio de sesión) y qué operaciones hay en cada una.
+     3. Qué has cambiado respecto al prototipo de la UD1 y por qué.
+     4. Las entidades de tu modelo, su relación y las reglas que has programado. -->
 
-## Planificación
+## Ramas
 
-<!-- 1. El enlace a tu tablero de Trello (público o compartido con el profesor).
-     2. Una o dos frases: cómo te has organizado y qué te costó más de lo previsto.
-     3. Tabla de ramas: una fila por rama feat/… con su tarjeta de Trello y el número de su pull request. -->
+<!-- Una fila por rama feat/… fusionada en main, con qué funcionalidad tiene y, si hiciste una pull request, su número. -->
 
-| Rama | Tarjeta de Trello | Pull request | Parte (eventos, MVVM o común) |
-|------|-------------------|--------------|-------------------------------|
-| `feat/` | | # | |
+| Rama | Qué funcionalidad | Pull request (opcional) |
+|------|-------------------|-------------------------|
+| `feat/` | | |
 
-## Parte con eventos
+## Editor visual y code-behind
 
-<!-- 0. Qué entidad has programado con eventos y cuál con MVVM, y por qué las has repartido así.
-     1. Qué resuelves con eventos (la ventana principal y la vista de la entidad con eventos) y en qué ficheros.
+<!-- 1. Qué generó el editor visual al empezar la ventana principal y qué cambiaste después a mano.
      2. Un fragmento de un manejador de eventos (en un bloque ```csharp): qué lee, a quién llama y qué muestra.
-     3. Compara el alta de la entidad con eventos con el alta de la entidad con MVVM: qué cambia
-        y qué problemas del code-behind (tema 8) ves en tu propia ventana.
-     4. Qué generó el editor visual al empezar la ventana y qué cambiaste después a mano. -->
+     3. Qué problemas del code-behind (tema 8) ves en tu propia aplicación. -->
 
 ## Arquitectura
 
-<!-- 1. Un diagrama de los proyectos (Mermaid) y qué contiene cada uno.
-     2. Tabla de ViewModels: qué vista dibuja cada uno, qué comandos tiene y qué servicios recibe.
-     3. Cómo se navega entre vistas y cómo recibe cada vista su ViewModel o su repositorio. -->
+<!-- 1. Un diagrama de los dos proyectos (Mermaid) y qué contiene cada uno, con la carpeta Repositorio/.
+     2. Tabla de vistas: qué dibuja cada una, qué manejadores tiene y qué recibe en el constructor.
+     3. Cómo se navega entre vistas y cómo recibe cada vista el repositorio. -->
 
-| ViewModel | Vista | Comandos | Recibe |
-|-----------|-------|----------|--------|
+| Vista | Qué muestra | Manejadores principales | Recibe |
+|-------|-------------|-------------------------|--------|
 | | | | |
 
 ## Base de datos
 
-<!-- 1. El modelo de datos como diagrama erDiagram de Mermaid.
-     2. Tabla con cada consulta del repositorio: qué hace, el SQL y si lleva JOIN o transacción.
-     3. Dónde está el .db, cómo se crea el esquema y cómo se tratan los errores. -->
-
-| Método | Qué hace | SQL | JOIN / transacción |
-|--------|----------|-----|--------------------|
-| | | | |
+<!-- 1. Las tablas que has creado, como diagrama erDiagram de Mermaid.
+     2. Dónde está el .db y cómo se tratan los errores de la base de datos. -->
 
 ## Inicio de sesión
 
 <!-- 1. Usuario y contraseña de prueba que traen los datos de ejemplo.
-     2. Cómo se guarda la contraseña (tabla Usuarios, sal, hash, algoritmo e iteraciones).
-     3. Cómo llega la contraseña del PasswordBox al ViewModel (y por qué lo has hecho así: explícalo también
-        en «Decisiones técnicas»). -->
+     2. En qué tabla están los usuarios y cómo se guarda la contraseña (y, si has hecho hash con sal, algoritmo e iteraciones).
+     3. Dónde se lee la contraseña del PasswordBox y quién la comprueba. -->
 
 | Usuario de prueba | Contraseña de prueba |
 |-------------------|----------------------|
@@ -61,10 +51,9 @@
 
 ## Interfaz
 
-<!-- 1. Captura de cada vista junto a su frame del prototipo.
+<!-- 1. Captura de cada pantalla junto a su frame del prototipo.
      2. Tabla con los recursos del UI Kit (colores, tipografía, espaciado) y su clave en Recursos/.
-     3. Tabla de controles: dónde usas cada control de la lista del enunciado.
-     4. Accesibilidad: teclas de acceso, atajos y controles con AutomationProperties.Name. -->
+     3. Tabla de controles: dónde usas cada control de la lista del enunciado. -->
 
 | Elemento del UI Kit | Valor | Recurso |
 |---------------------|-------|---------|
@@ -82,13 +71,13 @@
 | `ListBox` | | |
 | `ComboBox` | | |
 | `DataGrid` o `ListView` | | |
-| `Menu` | | |
-| `MessageBox` (servicio de diálogos) | | |
+| `Menu` (opcional) | | |
+| `MessageBox` | | |
 
 ## Decisiones técnicas
 
-<!-- Las decisiones que has tomado y por qué: comandos a mano o con el CommunityToolkit, navegación con
-     DataTemplate o ventanas, cómo une el modelo con la base de datos, qué va en una transacción… -->
+<!-- Las decisiones que has tomado y por qué: navegación entre vistas, cómo une el modelo con la base de
+     datos, qué tablas has creado y por qué… -->
 
 ## Pruebas manuales
 
@@ -102,4 +91,4 @@
 
 ## Cómo ejecutarlo
 
-<!-- Proyecto de inicio, qué hace falta, cómo volver a los datos de ejemplo. -->
+<!-- Proyecto de inicio, qué hace falta, cómo volver a los datos de ejemplo y el enlace a la release 1.0. -->
